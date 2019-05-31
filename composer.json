@@ -1,0 +1,25 @@
+{
+    "name": "kuza/user-data-capture",
+    "description": "Capture the user data on the server for your project",
+    "keywords": ["click-stream", "user-data", "package"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Phelix Juma",
+            "email": "jumaphelix@kuzalab.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+		"php": ">=7.1",
+        "geoip2/geoip2": "~2.0"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kuza\\UserDataCapture\\": "src/"
+        }
+    }
+}
