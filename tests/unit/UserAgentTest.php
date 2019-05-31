@@ -26,12 +26,12 @@ class UserAgentTest extends TestCase {
 
         $this->userAgent->setUserAgent($userAgentString);
 
-        $this->assertEquals('Android', $this->userAgent->getPlatform());
-        $this->assertEquals('Android Browser', $this->userAgent->getBrowser());
-        $this->assertEquals('4.0', $this->userAgent->getVersion());
-        $this->assertFalse($this->userAgent->isApp());
-        $this->assertFalse($this->userAgent->isBot());
-        $this->assertTrue($this->userAgent->isMobile());
+        $this->assertEquals('Android', $this->userAgent->platform);
+        $this->assertEquals('Android Browser', $this->userAgent->browser);
+        $this->assertEquals('4.0', $this->userAgent->version);
+        $this->assertFalse($this->userAgent->is_app);
+        $this->assertFalse($this->userAgent->is_bot);
+        $this->assertTrue($this->userAgent->is_mobile);
     }
 
     /**
@@ -43,11 +43,28 @@ class UserAgentTest extends TestCase {
 
         $this->userAgent->setUserAgent($userAgentString);
 
-        $this->assertEquals('Windows', $this->userAgent->getPlatform());
-        $this->assertEquals('Chrome', $this->userAgent->getBrowser());
-        $this->assertEquals('74.0.3729.169', $this->userAgent->getVersion());
-        $this->assertFalse($this->userAgent->isApp());
-        $this->assertFalse($this->userAgent->isBot());
-        $this->assertFalse($this->userAgent->isMobile());
+        $this->assertEquals('Windows', $this->userAgent->platform);
+        $this->assertEquals('Chrome', $this->userAgent->browser);
+        $this->assertEquals('74.0.3729.169', $this->userAgent->version);
+        $this->assertFalse($this->userAgent->is_app);
+        $this->assertFalse($this->userAgent->is_bot);
+        $this->assertFalse($this->userAgent->is_mobile);
+    }
+
+    /**
+     * Test for chrome browser
+     */
+    public function testBot() {
+
+        $userAgentString = 'PostmanRuntime/7.11.0';
+
+        $this->userAgent->setUserAgent($userAgentString);
+
+        $this->assertEquals('', $this->userAgent->platform);
+        $this->assertEquals('PostmanRuntime', $this->userAgent->browser);
+        $this->assertEquals('7.11.0', $this->userAgent->version);
+        $this->assertFalse($this->userAgent->is_app);
+        $this->assertTrue($this->userAgent->is_bot);
+        $this->assertFalse($this->userAgent->is_mobile);
     }
 }
