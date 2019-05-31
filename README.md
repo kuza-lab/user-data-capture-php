@@ -53,25 +53,33 @@ Usage
     
     # Get the user's location details
     
-    $location = new Location();
-    
-    $continent_name = $location->continent_name;
-    $country_name = $location->country_name;
-    $city_name = $location->city_name;
-    $latitude = $location->latitude;
-    $longitude  = $location->longitude;
-    $timezone = $location->timezone;
+   
+    try {
+        $location = new Location();
+
+        $continent_name = $location->continent_name;
+        $country_name = $location->country_name;
+        $city_name = $location->city_name;
+        $latitude = $location->latitude;
+        $longitude  = $location->longitude;
+        $timezone = $location->timezone;
+
+    } catch (\MaxMind\Db\Reader\InvalidDatabaseException $ex) {
+        echo $ex->getMessage();
+    } catch (\Exception $ex) {
+        echo $ex->getMessage();
+    }
     
     # Get the user's device details
     
     $device = new UserAgent();
     
-    $os = $device->getPlatform();
-    $browser = $device->getBrowser();
-    $browser_version = $device->getVersion();
-    $is_mobile = $device->isMobile();
-    $is_app = $device->isApp();
-    $is_bot = $device->isBot();
+    $os = $device->platform;
+    $browser = $device->browser;
+    $browser_version = $device->version;
+    $is_mobile = $device->is_mobile;
+    $is_app = $device->is_app;
+    $is_bot = $device->is_bot;
     
     # Get request details
     

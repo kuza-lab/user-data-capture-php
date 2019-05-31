@@ -16,47 +16,47 @@ class UserAgent {
     /**
      * @var string $user_agent the raw user agent
      */
-    private $user_agent;
+    public $user_agent = '';
 
     /**
      * @var string $platform the operating system used by the user
      */
-    private $platform = '';
+    public $platform = '';
 
     /**
      * @var string the user's browser
      */
-    private $browser = '';
+    public $browser = '';
 
     /**
      * @var string the browser version
      */
-    private $version = '';
+    public $version = '';
 
     /**
      * @var bool wether this is a mobile user or not
      */
-    private $is_mobile;
+    public $is_mobile;
 
     /**
      * @var bool whether this is an app access or not
      */
-    private $is_app;
+    public $is_app;
 
     /**
      * @var bool whether this is a bot or not
      */
-    private $is_bot;
+    public $is_bot;
 
     /**
      * @var array list of mobile platforms
      */
-    protected $mobile_platforms = ['android','ios','iphone','ipad','ipod','windows phone','blackberry'];
+    private $mobile_platforms = ['android','ios','iphone','ipad','ipod','windows phone','blackberry'];
 
     /**
      * @var array list of bots
      */
-    protected $bot_browsers = ['Baiduspider','Googlebot','YandexBot','bingbot','Lynx','Version','Wget','curl'];
+    private $bot_browsers = ['Baiduspider','Googlebot','YandexBot','bingbot','Lynx','Version','Wget','curl'];
 
     /**
      * UserAgent constructor.
@@ -73,6 +73,7 @@ class UserAgent {
     public function setUserAgent($userAgent = '') {
 
         $userAgent = empty($userAgent) && isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : $userAgent;
+
         $this->user_agent = $userAgent;
 
         $this->process();
@@ -92,62 +93,6 @@ class UserAgent {
         $this->is_app = strpos(strtolower($this->user_agent), 'dalvick');
         $this->is_bot = in_array(strtolower($this->browser), $this->bot_browsers);
         $this->is_mobile = in_array(strtolower($this->platform), $this->mobile_platforms);
-    }
-
-    /**
-     * Get the raw user agent
-     * @return string
-     */
-    public function getUserAgent() {
-        return $this->user_agent;
-    }
-
-    /**
-     * Get platform
-     * @return mixed|string
-     */
-    public function getPlatform() {
-        return $this->platform;
-    }
-
-    /**
-     * Get the browser
-     * @return mixed|string
-     */
-    public function getBrowser() {
-        return $this->browser;
-    }
-
-    /**
-     * Get the version
-     * @return mixed|string
-     */
-    public function getVersion() {
-        return $this->version;
-    }
-
-    /**
-     * Check if is app
-     * @return bool|int
-     */
-    public function isApp() {
-        return $this->is_app;
-    }
-
-    /**
-     * Check if is bot
-     * @return bool|int
-     */
-    public function isBot() {
-        return $this->is_app;
-    }
-
-    /**
-     * Check if is mobile
-     * @return bool
-     */
-    public function isMobile() {
-        return $this->is_mobile;
     }
 
     /**
