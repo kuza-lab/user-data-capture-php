@@ -9,7 +9,7 @@
             "email": "jumaphelix@kuzalab.com"
         }
     ],
-    "type": "library",
+    "type": "package",
     "require": {
 		"php": ">=5.3.7",
         "geoip2/geoip2": "~2.0"
