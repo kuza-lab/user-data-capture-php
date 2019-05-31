@@ -91,6 +91,14 @@ class UserAgent {
         $this->version = $userAgentComponents['version'];
 
         $this->is_app = strpos(strtolower($this->user_agent), 'dalvick');
+
+        if (in_array(strtolower($this->browser), $this->bot_browsers)) {
+            print "$this->browser is a bot";
+        } else {
+            print "$this->browser is a not bot";
+            print_r($this->bot_browsers);
+        }
+
         $this->is_bot = in_array(strtolower($this->browser), $this->bot_browsers);
         $this->is_mobile = in_array(strtolower($this->platform), $this->mobile_platforms);
     }
