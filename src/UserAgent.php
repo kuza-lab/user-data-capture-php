@@ -56,7 +56,7 @@ class UserAgent {
     /**
      * @var array list of bots
      */
-    private $bot_browsers = ['Baiduspider','Googlebot','YandexBot','bingbot','Lynx','Version','Wget','curl'];
+    private $bot_browsers = ['baiduspider','googlebot','yandexbot','bingbot','lynx','version','wget','curl','postmanruntime'];
 
     /**
      * UserAgent constructor.
