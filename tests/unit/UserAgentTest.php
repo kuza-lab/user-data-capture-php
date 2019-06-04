@@ -28,7 +28,7 @@ class UserAgentTest extends TestCase {
 
         $this->assertEquals('Android', $this->userAgent->platform);
         $this->assertEquals('Android Browser', $this->userAgent->browser);
-        $this->assertEquals('4.0', $this->userAgent->version);
+        $this->assertEquals('4.0', $this->userAgent->browser_version);
         $this->assertFalse($this->userAgent->is_app);
         $this->assertFalse($this->userAgent->is_bot);
         $this->assertTrue($this->userAgent->is_mobile);
@@ -45,7 +45,7 @@ class UserAgentTest extends TestCase {
 
         $this->assertEquals('Windows', $this->userAgent->platform);
         $this->assertEquals('Chrome', $this->userAgent->browser);
-        $this->assertEquals('74.0.3729.169', $this->userAgent->version);
+        $this->assertEquals('74.0.3729.169', $this->userAgent->browser_version);
         $this->assertFalse($this->userAgent->is_app);
         $this->assertFalse($this->userAgent->is_bot);
         $this->assertFalse($this->userAgent->is_mobile);
@@ -62,9 +62,27 @@ class UserAgentTest extends TestCase {
 
         $this->assertEquals('', $this->userAgent->platform);
         $this->assertEquals('PostmanRuntime', $this->userAgent->browser);
-        $this->assertEquals('7.11.0', $this->userAgent->version);
+        $this->assertEquals('7.11.0', $this->userAgent->browser_version);
         $this->assertFalse($this->userAgent->is_app);
         $this->assertTrue($this->userAgent->is_bot);
         $this->assertFalse($this->userAgent->is_mobile);
+    }
+
+    /**
+     * Test for chrome browser
+     */
+    public function testAndroid() {
+
+        $userAgentString = 'Dalvik/2.1.0 (Linux; U; Android 5.1.1; SkipperV2 Build/NTH26)';
+
+        $this->userAgent->setUserAgent($userAgentString);
+
+        $this->assertEquals('Android', $this->userAgent->platform);
+        $this->assertEquals('5.1.1', $this->userAgent->platform_version);
+        $this->assertEquals('Dalvik', $this->userAgent->browser);
+        $this->assertEquals('2.1.0', $this->userAgent->browser_version);
+        $this->assertFalse($this->userAgent->is_app);
+        $this->assertFalse($this->userAgent->is_bot);
+        $this->assertTrue($this->userAgent->is_mobile);
     }
 }
