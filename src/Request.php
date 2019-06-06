@@ -130,7 +130,7 @@ class Request {
      * Set the method
      */
     private function setMethod() {
-        $this->method = isset($this->headers['REQUEST_METHOD']) ? $this->headers['REQUEST_METHOD'] : "";
+        $this->method = isset($this->headers['request_method']) ? $this->headers['request_method'] : "";
     }
 
     /**
