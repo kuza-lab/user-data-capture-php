@@ -55,7 +55,7 @@ Usage
     
    
     try {
-        $location = new Location();
+        $location = new Location("path_to_maxmind_db");
 
         $continent_name = $location->continent_name;
         $country_name = $location->country_name;
