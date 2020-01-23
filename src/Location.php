@@ -210,7 +210,7 @@ class Location {
         } else {
             $ip_address = '';
         }
-        return $ip_address;
+        return explode($ip_address,",")[0];
     }
 
     /**
