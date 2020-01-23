@@ -165,13 +165,13 @@ class Location {
 
     /**
      * Location constructor.
-     *
+     * @param $database_path
      * @param string $ipAddress
      * @throws InvalidDatabaseException
      * @throws \Exception
      */
-    public function __construct($ipAddress = '') {
-        $this->reader = new Reader('/usr/local/share/GeoIP/GeoLite2-City.mmdb');
+    public function __construct($database_path, $ipAddress = '') {
+        $this->reader = new Reader($database_path . DIRECTORY_SEPARATOR . 'GeoLite2-City.mmdb');
         $this->setIpAddress($ipAddress);
     }
 
